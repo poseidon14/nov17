@@ -1,0 +1,123 @@
+@charset "UTF-8";
+* {font-family: 'IBM Plex Sans KR', 'Nanum Gothic', sans-serif;}
+a {
+	color: black;
+	text-decoration: none;
+}
+
+input {vertical-align: text-top;}
+
+body {margin: 0 auto;}
+
+#header {
+	margin: 0 auto;
+	width: 90%;
+	height: 70px;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+#header1 {
+	width: 70%;
+	height: 70px;
+	float: left;
+}
+
+#header2 {
+	float: left;
+	width: 30%;
+	height: 30px;
+	padding-top: 25px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+#menu {
+	margin: 0 auto;
+	width: 100%;
+	vertical-align: middle;
+	background-color: #3ea3ba;
+	overflow: hidden;
+}
+
+#menubar {
+	margin: 0 auto;
+	width: 90%;
+	border: none;
+	border: 0px;
+	padding: 0px;
+	font-weight: bold;
+}
+
+#menubar ul {
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	list-style: none;
+}
+
+#menubar li {
+	float: left;
+	padding: 0px;
+}
+
+#menubar li a {
+	margin: 0px;
+	padding: 0px 25px;
+	display: block;
+	line-height: 50px;
+	text-align: center;
+	text-decoration: none;
+}
+
+#menubar li a:hover, #menubar ul li:hover a {
+	background-color: #358da1;
+	text-decoration: none;
+}
+
+#menubar li ul {
+	background-color: #358da1;
+	display: none;
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	position: absolute;
+	width: 200px;
+	z-index: 200;
+}
+
+#menubar li:hover ul {
+	display: block;
+}
+
+#menubar li li {
+	background-color: #358da1;
+	display: block;
+	float: none;
+	margin: 0px;
+	padding: 0px;
+	width: 200px;
+}
+
+#menubar li:hover li a {
+	background: none;
+}
+
+#menubar li ul a {
+	display: block;
+	height: 50px;
+	margin: 0px;
+	padding: 0px 10px 0px 15px;
+	text-align: left;
+	font-weight: bold;
+}
+
+#menubar li ul a:hover, #menubar li ul li:hover a {
+	background-color: #358da1;
+	border: 0px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#menubar p {clear: left;}

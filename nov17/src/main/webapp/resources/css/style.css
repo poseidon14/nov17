@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+* {font-family: 'Nanum Gothic Coding', 'IBM Plex Sans KR', 'Nanum Gothic', sans-serif;}
+a {
+	text-decoration: none;
+}
+.header{
+	margin: 0 auto;
+	width: 100%;
+	background-color: #0d6efd;	
+}
+
+.lock{
+	padding-left:25px;
+	text-align:left;
+	color:white;
+	float:right;
+	display:inline-block;
+	width:150px;
+	height:24px;
+  	background:url('../images/lock.png') no-repeat;
+  	overflow: hidden;
+}
+.lock:hover{
+	color: #c0c0c0;
+	background:url('../images/unlock.png') no-repeat;
+}
+
+article{
+	margin-top: 10px;	
+}
+nav {
+	margin: 0 auto;
+	width: 90%;
+	height: auto;
+	text-align: center;
+}
+footer {
+	clear: both;
+	position: absolute;
+	bottom: 0;
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+	color: white;
+	background-color: #e87c11;
+}
