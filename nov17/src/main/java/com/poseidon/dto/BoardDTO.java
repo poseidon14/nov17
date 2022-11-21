@@ -2,7 +2,7 @@ package com.poseidon.dto;
 
 public class BoardDTO {
 	private int board_no, mno;
-	private String board_title, board_content, board_date, name;
+	private String board_title, board_content, board_date, name, mid;
 
 	public int getBoard_no() {
 		return board_no;
@@ -50,6 +50,14 @@ public class BoardDTO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
 }

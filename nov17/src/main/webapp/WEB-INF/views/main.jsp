@@ -37,7 +37,9 @@
 			<c:forEach items="${list }" var="row">
 			<tr class="row">
 				<td class="col-sm-1">${row.board_no }</td>
-				<td class="col-sm-6">${row.board_title }</td>
+				<td class="col-sm-6">
+					<a href="./detail?bno=${row.board_no }">${row.board_title }</a>
+				</td>
 				<td class="col-sm-3">${row.board_date }</td>
 				<td class="col-sm-2">${row.name }</td>
 			</tr>

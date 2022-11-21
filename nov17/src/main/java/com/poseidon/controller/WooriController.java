@@ -24,9 +24,9 @@ public class WooriController {
 	private WooriService wooriService;
 
 	@RequestMapping(value = "/")
-	public ModelAndView index(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("index");
-		return mv;
+	public String index(HttpServletRequest request) throws Exception {
+		//ModelAndView mv = new ModelAndView("index");
+		return "index";
 	}
 
 	@GetMapping(value = "/main")
@@ -93,6 +93,48 @@ public class WooriController {
 		} else {
 			return "redirect:/";//로그인 화면으로 던지기
 		}
+	}
+	//그냥 페이지를 열기만 한다  = String
+	//데이터를 붙여서 열어야 한다 = ModelAndView
+	
+	@GetMapping("/detail")
+	public ModelAndView detail(HttpServletRequest request) {//bno=글번호
+		ModelAndView mv = new ModelAndView("detail");
+		if(request.getParameter("bno") != null) {//숫자인데 왜?			
+			//System.out.println(request.getParameter("bno"));
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			//컨트롤러 -> 서비스 -> DAO -> sqlSession -> DB
+			BoardDTO detail = wooriService.detail(bno);
+			//System.out.println(detail.getBoard_title());
+			//System.out.println(detail.getBoard_content());
+			//System.out.println(detail.getBoard_no());
+			mv.addObject("detail", detail);//붙여주세요.
+		} else {
+			//작업 안 하면 됩니다.
+		}
+		
+		return mv;
+	}
+	
+	@GetMapping("/delete")
+	public String delete(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("id") != null) {
+			//출력문으로 bno를 찍어주세요.
+			//System.out.println(request.getParameter("bno"));
+			
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			BoardDTO dto = new BoardDTO();
+			dto.setBoard_no(bno);
+			dto.setMid((String) session.getAttribute("id"));
+			
+			wooriService.delete(dto);//void 반환타입이 없습니다.
+			return "redirect:/main";
+		}else {
+			//로그인 안 함 = /로 던지기
+			return "redirect:/";
+		}
+		
 	}
 	
 	

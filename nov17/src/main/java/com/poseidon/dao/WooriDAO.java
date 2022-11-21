@@ -19,11 +19,20 @@ public class WooriDAO {
 	}
 
 	public List<BoardDTO> boardList() {
-		return sqlSession.selectList("board.boardList");//파라미터가 없어요.
+		return sqlSession.selectList("board.boardList");// 파라미터가 없어요.
 	}
 
 	public int write(BoardDTO dto) {
 		return sqlSession.insert("board.write", dto);
+	}
+
+	// 컨트롤러 -> 서비스 -> DAO -> sqlSession -> DB
+	public BoardDTO detail(int bno) {
+		return sqlSession.selectOne("board.detail", bno);
+	}
+
+	public void delete(BoardDTO dto) {
+		sqlSession.delete("board.delete", dto);
 	}
 
 }

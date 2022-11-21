@@ -11,5 +11,16 @@
 		VALUES(#{board_title }, #{board_content }
 						, (SELECT mno FROM member WHERE mid=#{name }))
 	</insert>
+	
+	<select id="detail" parameterType="Integer" resultType="boardDTO">
+		SELECT board_no, board_title, board_content, board_date, mid, mname as name
+		FROM boardview
+		WHERE board_no=#{bno }
+	</select>
+	
+	<delete id="delete" parameterType="boardDTO">
+		DELETE FROM board 
+		WHERE board_no=#{board_no } AND mno=(SELECT mno FROM member WHERE mid=#{mid })
+	</delete>
 
 </mapper>
