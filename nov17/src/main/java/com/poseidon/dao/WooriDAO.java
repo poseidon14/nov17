@@ -44,4 +44,8 @@ public class WooriDAO {
 		return sqlSession.insert("board.commentInsert", dto);
 	}
 
+	public List<CommentDTO> commentList(BoardDTO dto) {
+		return sqlSession.selectList("board.commentList", dto);
+	}
+
 }

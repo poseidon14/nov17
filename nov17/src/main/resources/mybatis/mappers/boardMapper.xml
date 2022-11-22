@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
 	<select id="boardList" resultType="boardDTO">
-		SELECT board_title, board_date, board_no, mname as name
+		SELECT board_title, board_date, board_no, mname as name, commentcount
 		FROM boardview
 	</select>
 
@@ -13,7 +13,7 @@
 	</insert>
 	
 	<select id="detail" parameterType="boardDTO" resultType="boardDTO">
-		SELECT board_no, board_title, board_content, board_date, mid, mname as name
+		SELECT board_no, board_title, board_content, board_date, mid, mname as name, commentcount
 		FROM boardview
 		WHERE board_no=#{board_no }
 		<if test="mid != null">
@@ -36,5 +36,9 @@
 		INSERT INTO comment (c_comment, board_no, mno)
 		VALUES(#{c_comment }, #{board_no }, (SELECT mno FROM member WHERE mid=#{mid }) )
 	</insert>
+	
+	<select id="commentList" parameterType="boardDTO" resultType="commentDTO">
+		SELECT * FROM comment WHERE board_no=#{board_no }
+	</select>
 
 </mapper>

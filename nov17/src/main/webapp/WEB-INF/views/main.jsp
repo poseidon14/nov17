@@ -39,6 +39,10 @@
 				<td class="col-sm-1">${row.board_no }</td>
 				<td class="col-sm-6">
 					<a href="./detail?bno=${row.board_no }">${row.board_title }</a>
+						<c:if test="${row.commentcount ne 0 }">
+							<%-- <small>${row.commentcount }</small> --%>
+							<span class="badge bg-danger">${row.commentcount }</span>
+						</c:if>
 				</td>
 				<td class="col-sm-3">${row.board_date }</td>
 				<td class="col-sm-2">${row.name }</td>

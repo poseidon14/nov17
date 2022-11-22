@@ -50,4 +50,8 @@ public class WooriService {
 		return wooriDAO.commentInsert(dto);
 	}
 
+	public List<CommentDTO> commentList(BoardDTO dto) {
+		return wooriDAO.commentList(dto);
+	}
+
 }

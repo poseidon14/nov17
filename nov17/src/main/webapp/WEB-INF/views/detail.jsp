@@ -63,6 +63,7 @@ function update(bno){
 		</table>
 		<button class="xi-sort-asc btn btn-primary" onclick="location.href='./main'"> 게시판으로</button>
 		<div class="comment">
+			<c:if test="${sessionScope.id ne null }">
 			<div id="commentInput">
 				<form action="./comment" method="post">
 					<input type="hidden" name="bno" value="${param.bno }">
@@ -70,6 +71,9 @@ function update(bno){
 					<button type="submit" >댓글쓰기</button>
 				</form>
 			</div>
+			</c:if>
+			<!-- 댓글들은 여기에 -->
+			${commentList }
 		</div>
 	</div>	
 </div>

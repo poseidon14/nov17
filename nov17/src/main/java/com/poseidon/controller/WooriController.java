@@ -113,6 +113,13 @@ public class WooriController {
 			//System.out.println(detail.getBoard_content());
 			//System.out.println(detail.getBoard_no());
 			mv.addObject("detail", detail);//붙여주세요.
+			//댓글도 불러와서 mv에 붙이기
+			//System.out.println("댓글 수 : " + detail.getCommentcount());
+			if(detail.getCommentcount() != 0) {
+				List<CommentDTO> commentList = wooriService.commentList(dto);
+				mv.addObject("commentList", commentList);
+				System.out.println("댓글 수 : " + commentList.size());
+			}
 		} else {
 			//작업 안 하면 됩니다.
 		}

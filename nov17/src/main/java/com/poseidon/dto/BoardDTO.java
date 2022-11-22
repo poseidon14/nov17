@@ -1,7 +1,7 @@
 package com.poseidon.dto;
 
 public class BoardDTO {
-	private int board_no, mno;
+	private int board_no, mno, commentcount;
 	private String board_title, board_content, board_date, name, mid;
 
 	public int getBoard_no() {
@@ -58,6 +58,14 @@ public class BoardDTO {
 
 	public void setMid(String mid) {
 		this.mid = mid;
+	}
+
+	public int getCommentcount() {
+		return commentcount;
+	}
+
+	public void setCommentcount(int commentcount) {
+		this.commentcount = commentcount;
 	}
 
 }
