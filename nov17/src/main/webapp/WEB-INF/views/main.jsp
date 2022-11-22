@@ -46,11 +46,12 @@
 			</c:forEach>
 		</table>
 		
-		<button class="btn btn-primary" onclick="location.href='./write'">글쓰기</button>
+		<!-- <button class="btn btn-primary" onclick="location.href='./write'">글쓰기</button> -->
 		
 	</article>
-		
-	<button class="xi-new btn btn-warning" data-bs-toggle="modal" data-bs-target="#new"> 신규등록</button>
+	<c:if test="${sessionScope.id ne null }">
+		<button class="xi-new btn btn-warning" data-bs-toggle="modal" data-bs-target="#new"> 신규등록</button>
+
 
 <!-- 등록모달 시작 -->		
 <div class="modal fade" id="new" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,7 +77,9 @@
   </div>
 </div>
 <!-- 모달끝 -->
-
+	</c:if>
+	
+	
 	</div>
 </div>
 <script>

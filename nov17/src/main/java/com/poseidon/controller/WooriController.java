@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.dto.BoardDTO;
@@ -103,8 +104,10 @@ public class WooriController {
 		if(request.getParameter("bno") != null) {//숫자인데 왜?			
 			//System.out.println(request.getParameter("bno"));
 			int bno = Integer.parseInt(request.getParameter("bno"));
+			BoardDTO dto = new BoardDTO();
+			dto.setBoard_no(bno);
 			//컨트롤러 -> 서비스 -> DAO -> sqlSession -> DB
-			BoardDTO detail = wooriService.detail(bno);
+			BoardDTO detail = wooriService.detail(dto);//bno -> dto
 			//System.out.println(detail.getBoard_title());
 			//System.out.println(detail.getBoard_content());
 			//System.out.println(detail.getBoard_no());
@@ -135,6 +138,56 @@ public class WooriController {
 			return "redirect:/";
 		}
 		
+	}
+	//수정하기 -> DB 그내용 가져오기 -> 화면에 출력 -> 수정 -> 저장 -> DB저장
+	
+	//수정하기 2022-11-22
+	@GetMapping("/update")
+	public ModelAndView update(HttpSession session, @RequestParam(value = "bno", required = true) int bno) {
+		//@RequestParam(value = "bno", required = true) int bno
+		//파라미터로 들어오는 값을 자동 변환, 필수값으로 지정
+		
+		ModelAndView mv = new ModelAndView("redirect:/");
+		//로그인 검사 + bno검사
+		if(session.getAttribute("id") != null) {
+			//System.out.println("param이 잡은 bno : " + bno);
+			//데이터 가져오기
+			BoardDTO dto = new BoardDTO();
+			dto.setBoard_no(bno);
+			dto.setMid((String) session.getAttribute("id"));
+			
+			BoardDTO result = wooriService.detail(dto);//변경할겁니다.
+
+			System.out.println(result.getBoard_no());
+			System.out.println(result.getBoard_title());
+			System.out.println(result.getBoard_content());
+			
+			mv.addObject("update", result);
+			
+			mv.setViewName("update");
+		}
+		
+		return mv;
+	}
+	
+	@PostMapping("/update")
+	public String update(HttpServletRequest request){//데이터 받아서 DB에 보내고, 페이지 이동
+		//System.out.println(request.getParameter("bno"));
+		//System.out.println(request.getParameter("title"));
+		//System.out.println(request.getParameter("content"));
+		
+		BoardDTO dto = new BoardDTO();
+		//int bno = Integer.parseInt(request.getParameter("bno"));
+		dto.setBoard_no(Integer.parseInt(request.getParameter("bno")));
+		dto.setBoard_title(request.getParameter("title"));
+		dto.setBoard_content(request.getParameter("content"));
+		//세션
+		HttpSession session = request.getSession();
+		dto.setMid((String)session.getAttribute("id"));//이것도 가야 합니다.
+		
+		wooriService.update(dto);
+		
+		return "redirect:/detail?bno="+request.getParameter("bno");
 	}
 	
 	

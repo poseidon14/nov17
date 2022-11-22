@@ -27,12 +27,16 @@ public class WooriDAO {
 	}
 
 	// 컨트롤러 -> 서비스 -> DAO -> sqlSession -> DB
-	public BoardDTO detail(int bno) {
-		return sqlSession.selectOne("board.detail", bno);
+	public BoardDTO detail(BoardDTO dto) {
+		return sqlSession.selectOne("board.detail", dto);
 	}
 
 	public void delete(BoardDTO dto) {
 		sqlSession.delete("board.delete", dto);
+	}
+
+	public void update(BoardDTO dto) {
+		sqlSession.update("board.update", dto);
 	}
 
 }

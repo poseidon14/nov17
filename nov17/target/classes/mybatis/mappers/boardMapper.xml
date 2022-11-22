@@ -12,15 +12,24 @@
 						, (SELECT mno FROM member WHERE mid=#{name }))
 	</insert>
 	
-	<select id="detail" parameterType="Integer" resultType="boardDTO">
+	<select id="detail" parameterType="boardDTO" resultType="boardDTO">
 		SELECT board_no, board_title, board_content, board_date, mid, mname as name
 		FROM boardview
-		WHERE board_no=#{bno }
+		WHERE board_no=#{board_no }
+		<if test="mid != null">
+		 AND mno=(SELECT mno FROM member WHERE mid=#{mid })
+		</if>
 	</select>
 	
 	<delete id="delete" parameterType="boardDTO">
 		DELETE FROM board 
 		WHERE board_no=#{board_no } AND mno=(SELECT mno FROM member WHERE mid=#{mid })
 	</delete>
+	
+	<update id="update" parameterType="boardDTO">
+		UPDATE board 
+		SET board_title=#{board_title }, board_content=#{board_content } 
+		WHERE board_no=#{board_no } AND mno=(SELECT mno FROM member WHERE mid=#{mid })
+	</update>	
 
 </mapper>

@@ -15,6 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <link href="./css/style.css" rel="stylesheet" type="text/css">
 <link href="./css/index.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script type="text/javascript">
 function del(bno){
 	//alert("삭제 버튼을 클릭했습니다." + bno);
@@ -23,7 +24,10 @@ function del(bno){
 	}
 }
 function update(bno){
-	alert("수정 버튼을 클릭했습니다." + bno);
+	//alert("수정 버튼을 클릭했습니다." + bno);
+	if(confirm("수정하시겠습니까?")){
+		location.href="./update?bno="+bno;	
+	}
 	
 }
 </script>
@@ -55,8 +59,9 @@ function update(bno){
 				<th>본문</th>
 				<td>${detail.board_content }</td>
 			</tr>
-			
 		</table>
+		<button class="xi-sort-asc btn btn-primary" onclick="location.href='./main'"> 게시판으로</button>
+		
 	</div>	
 </div>
 <%@include file="footer.jsp"%>

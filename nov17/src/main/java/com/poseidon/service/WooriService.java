@@ -33,12 +33,16 @@ public class WooriService {
 	}
 	
 	//컨트롤러 -> 서비스 -> DAO -> sqlSession -> DB
-	public BoardDTO detail(int bno) {
-		return wooriDAO.detail(bno);
+	public BoardDTO detail(BoardDTO dto) {
+		return wooriDAO.detail(dto);
 	}
 
 	public void delete(BoardDTO dto) {
 		wooriDAO.delete(dto);
+	}
+
+	public void update(BoardDTO dto) {
+		wooriDAO.update(dto);		
 	}
 
 }

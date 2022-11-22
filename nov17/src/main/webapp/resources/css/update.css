@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#updateform{
+	margin: 0 auto;
+	width: 900px;
+	height: auto;
+	padding: 5px;
+}
+
+#updateform input {
+	height: 40px;
+	width : 100%;
+	margin-bottom: 5px;
+}
