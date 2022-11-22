@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.dto.BoardDTO;
+import com.poseidon.dto.CommentDTO;
 import com.poseidon.dto.LoginDTO;
 import com.poseidon.service.WooriService;
 
@@ -190,5 +191,27 @@ public class WooriController {
 		return "redirect:/detail?bno="+request.getParameter("bno");
 	}
 	
-	
+	@PostMapping("/comment")
+	public String commentInput(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("id") != null) {
+			//System.out.println(request.getParameter("comment"));
+			//System.out.println(request.getParameter("bno"));
+			//System.out.println(session.getAttribute("id"));
+			//데이터베이스에 저장하기
+			CommentDTO dto = new CommentDTO();
+			dto.setBoard_no(Integer.parseInt(request.getParameter("bno")));
+			dto.setC_comment(request.getParameter("comment"));
+			dto.setMid((String)session.getAttribute("id"));
+			
+			//Controller -> service -> dao -> sqlsession ->db
+			int result = wooriService.commentInsert(dto);
+			
+			System.out.println("저장결과 : " + result);
+			
+			return "redirect:/detail?bno="+request.getParameter("bno");
+		}else {			
+			return "redirect:/";
+		}
+	}
 }

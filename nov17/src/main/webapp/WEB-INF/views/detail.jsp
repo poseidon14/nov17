@@ -14,7 +14,7 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <link href="./css/style.css" rel="stylesheet" type="text/css">
-<link href="./css/index.css" rel="stylesheet" type="text/css">
+<link href="./css/detail.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script type="text/javascript">
 function del(bno){
@@ -30,6 +30,7 @@ function update(bno){
 	}
 	
 }
+
 </script>
 </head>
 <body>
@@ -61,7 +62,15 @@ function update(bno){
 			</tr>
 		</table>
 		<button class="xi-sort-asc btn btn-primary" onclick="location.href='./main'"> 게시판으로</button>
-		
+		<div class="comment">
+			<div id="commentInput">
+				<form action="./comment" method="post">
+					<input type="hidden" name="bno" value="${param.bno }">
+					<textarea name="comment"></textarea>
+					<button type="submit" >댓글쓰기</button>
+				</form>
+			</div>
+		</div>
 	</div>	
 </div>
 <%@include file="footer.jsp"%>

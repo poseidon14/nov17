@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.poseidon.dao.WooriDAO;
 import com.poseidon.dto.BoardDTO;
+import com.poseidon.dto.CommentDTO;
 import com.poseidon.dto.LoginDTO;
 
 @Service
@@ -43,6 +44,10 @@ public class WooriService {
 
 	public void update(BoardDTO dto) {
 		wooriDAO.update(dto);		
+	}
+
+	public int commentInsert(CommentDTO dto) {
+		return wooriDAO.commentInsert(dto);
 	}
 
 }

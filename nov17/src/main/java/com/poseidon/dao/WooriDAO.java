@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.poseidon.dto.BoardDTO;
+import com.poseidon.dto.CommentDTO;
 import com.poseidon.dto.LoginDTO;
 
 @Repository
@@ -37,6 +38,10 @@ public class WooriDAO {
 
 	public void update(BoardDTO dto) {
 		sqlSession.update("board.update", dto);
+	}
+
+	public int commentInsert(CommentDTO dto) {
+		return sqlSession.insert("board.commentInsert", dto);
 	}
 
 }

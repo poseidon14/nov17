@@ -4,6 +4,7 @@
 	<typeAliases>
 		<typeAlias type="com.poseidon.dto.LoginDTO" alias="loginDTO"/>
 		<typeAlias type="com.poseidon.dto.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="com.poseidon.dto.CommentDTO" alias="commentDTO"/>
 	</typeAliases>
 
 </configuration>
