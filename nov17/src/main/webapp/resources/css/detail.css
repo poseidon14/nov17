@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.commant{
+	
+}
+
+#commentInput{
+	width: 100%;
+	height: 150px;
+	padding: 5px;
+	box-sizing: border-box;
+	background-color: #c0c0c0;
+}
+
+#commentInput textarea{
+	height: 140px;
+	width: calc(100% - 100px);
+	vertical-align: middle;	
+	margin-right: 0px;
+}
+
+
+#commentInput button{
+	width: 100px;
+	height: 140px;
+	vertical-align: middle;
+	margin-left: -10px;
+}
