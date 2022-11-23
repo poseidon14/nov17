@@ -38,7 +38,7 @@
 	</insert>
 	
 	<select id="commentList" parameterType="boardDTO" resultType="commentDTO">
-		SELECT * FROM comment WHERE board_no=#{board_no }
+		SELECT * FROM commentview WHERE board_no=#{board_no }
 	</select>
 
 </mapper>

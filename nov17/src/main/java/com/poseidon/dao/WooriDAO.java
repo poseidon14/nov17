@@ -48,4 +48,8 @@ public class WooriDAO {
 		return sqlSession.selectList("board.commentList", dto);
 	}
 
+	public int commentDel(CommentDTO dto) {
+		return sqlSession.delete("comment.commentDel", dto);
+	}
+
 }

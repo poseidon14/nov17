@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.dto.BoardDTO;
@@ -219,6 +222,28 @@ public class WooriController {
 			return "redirect:/detail?bno="+request.getParameter("bno");
 		}else {			
 			return "redirect:/";
+		}
+	}
+	//REST API
+	@PostMapping("/commentDel")
+	public @ResponseBody String commentDel(@RequestParam(value="bno") int bno,
+					@RequestParam(value="cno") int cno, HttpSession session) {
+		int result = 0;
+		if(session.getAttribute("id") != null){		
+			System.out.println(bno);
+			System.out.println(cno);
+			System.out.println(session.getAttribute("id"));
+			
+			//데이터베이스로 보내서 삭제하는 명령 필요
+			CommentDTO dto = new CommentDTO();
+			dto.setBoard_no(bno);
+			dto.setC_no(cno);
+			dto.setMid((String)session.getAttribute("id"));
+			
+			result = wooriService.commentDel(dto);
+			return result+"";
+		}else {
+			return "9";					
 		}
 	}
 }

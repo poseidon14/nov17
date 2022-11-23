@@ -27,9 +27,39 @@ function update(bno){
 	//alert("수정 버튼을 클릭했습니다." + bno);
 	if(confirm("수정하시겠습니까?")){
 		location.href="./update?bno="+bno;	
-	}
-	
+	}	
 }
+//제이쿼리
+//$(선택자).명령();
+$(document).ready(function(){//이 jsp가 다 읽어졌다면
+	$(".delComment").click(function(){
+		if(confirm("삭제하시겠습니까?")){
+			var p = $(this).parents("#comment");
+			var c_no = $(this).siblings("#cid").text();		
+			$.post("./commentDel",{bno : "${detail.board_no}",cno : c_no},
+				function(data, status){
+					if(data == 1){
+						p.remove();								
+					}else if(data == 9){
+						alert("로그인하세요");
+						location.href="./";
+					}else {
+						alert("에러가 발생했습니다.\n다시 시도하세요.");		
+					}
+				}
+			);//post
+		}//end if
+	});//dele
+	
+	
+	$(".repairComment").click(function(){
+		if(confirm("수정하시겠습니까?")){
+			var c_no = $(this).siblings("#cid").text();
+			location.href="./repairComment?bno=${detail.board_no }&cno="+c_no;
+		}
+	});
+	
+});
 
 </script>
 </head>
@@ -73,10 +103,32 @@ function update(bno){
 			</div>
 			</c:if>
 			<!-- 댓글들은 여기에 -->
-			${commentList }
+			<c:choose>
+				<c:when test="${fn:length(commentList) gt 0 }">
+					<div id="comments"> <!-- 댓글을 전체 감싸고 있는 외부 -->
+						<c:forEach items="${commentList }" var="cm">
+						<div id="comment"> <!-- 댓글 하나 내역 -->
+							<div id="commentHead"> <!-- 댓글 머리부분 : 글쓴이, 날짜 등등 -->
+								${cm.mname }
+								<c:if test="${cm.mid eq sessionScope.id}">
+									<img alt="del" src="./images/delete.png" title="삭제하기" class="delComment">
+									<img alt="edit" src="./images/update.png" title="수정하기" class="repairComment">				
+								</c:if>${cm.c_date }
+								<div id="cid">${cm.c_no }</div> <!-- 댓글 번호 -->
+							</div>
+							<div id="commentBody">${cm.c_comment }</div> <!-- 댓글 내용 -->
+						</div>
+						</c:forEach>
+					</div>
+				</c:when>
+				<c:otherwise>
+					댓글이 없어요.
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 	</div>	
 </div>
-<%@include file="footer.jsp"%>
+
 </body>
 </html>

@@ -54,4 +54,8 @@ public class WooriService {
 		return wooriDAO.commentList(dto);
 	}
 
+	public int commentDel(CommentDTO dto) {
+		return wooriDAO.commentDel(dto);
+	}
+
 }
