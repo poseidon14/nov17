@@ -50,6 +50,8 @@
 			</c:forEach>
 		</table>
 		
+		<!-- 페이지네이션 -->
+		<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
 		<!-- <button class="btn btn-primary" onclick="location.href='./write'">글쓰기</button> -->
 		
 	</article>
@@ -87,6 +89,11 @@
 	</div>
 </div>
 <script>
+function linkPage(pageNo){
+	location.href = "./main?pageNo="+pageNo;
+}	
+
+
     $(document).ready(function() {
         $('#summernote').summernote({
         	height: 400

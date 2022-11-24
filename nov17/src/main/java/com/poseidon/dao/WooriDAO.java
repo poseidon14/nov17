@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.poseidon.dto.BoardDTO;
 import com.poseidon.dto.CommentDTO;
-import com.poseidon.dto.LoginDTO;
 
 @Repository
 public class WooriDAO {
@@ -17,8 +16,8 @@ public class WooriDAO {
 
 
 
-	public List<BoardDTO> boardList() {
-		return sqlSession.selectList("board.boardList");// 파라미터가 없어요.
+	public List<BoardDTO> boardList(BoardDTO send) {
+		return sqlSession.selectList("board.boardList", send);
 	}
 
 	public int write(BoardDTO dto) {
@@ -48,6 +47,10 @@ public class WooriDAO {
 
 	public int commentDel(CommentDTO dto) {
 		return sqlSession.delete("comment.commentDel", dto);
+	}
+
+	public int totalCount() {
+		return sqlSession.selectOne("board.totalCount");
 	}
 
 }

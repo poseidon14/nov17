@@ -21,4 +21,12 @@ public class LoginService {
 		}
 	}
 
+	public int idCheck(String id) {
+		return loginDAO.idCheck(id);
+	}
+
+	public int join(LoginDTO dto) {
+		return loginDAO.join(dto);
+	}
+
 }

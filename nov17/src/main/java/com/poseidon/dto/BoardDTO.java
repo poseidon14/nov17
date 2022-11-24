@@ -1,7 +1,7 @@
 package com.poseidon.dto;
 
 public class BoardDTO {
-	private int board_no, mno, commentcount;
+	private int board_no, mno, commentcount, startPage, lastPage;
 	private String board_title, board_content, board_date, name, mid;
 
 	public int getBoard_no() {
@@ -18,6 +18,30 @@ public class BoardDTO {
 
 	public void setMno(int mno) {
 		this.mno = mno;
+	}
+
+	public int getCommentcount() {
+		return commentcount;
+	}
+
+	public void setCommentcount(int commentcount) {
+		this.commentcount = commentcount;
+	}
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	public int getLastPage() {
+		return lastPage;
+	}
+
+	public void setLastPage(int lastPage) {
+		this.lastPage = lastPage;
 	}
 
 	public String getBoard_title() {
@@ -58,14 +82,6 @@ public class BoardDTO {
 
 	public void setMid(String mid) {
 		this.mid = mid;
-	}
-
-	public int getCommentcount() {
-		return commentcount;
-	}
-
-	public void setCommentcount(int commentcount) {
-		this.commentcount = commentcount;
 	}
 
 }

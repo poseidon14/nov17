@@ -4,6 +4,7 @@
 	<select id="boardList" resultType="boardDTO">
 		SELECT board_title, board_date, board_no, mname as name, commentcount
 		FROM boardview
+		LIMIT #{startPage }, #{lastPage }
 	</select>
 
 	<insert id="write" parameterType="boardDTO">
@@ -39,6 +40,11 @@
 	
 	<select id="commentList" parameterType="boardDTO" resultType="commentDTO">
 		SELECT * FROM commentview WHERE board_no=#{board_no }
+	</select>
+	
+	
+	<select id="totalCount" resultType="Integer">
+		SELECT COUNT(*) FROM boardview
 	</select>
 
 </mapper>

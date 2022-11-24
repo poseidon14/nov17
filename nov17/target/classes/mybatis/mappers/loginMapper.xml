@@ -7,4 +7,13 @@
 		WHERE mid=#{id } AND mpw=#{pw }
 	</select>
 
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM member WHERE MID=#{id }
+	</select>
+
+	<insert id="join" parameterType="loginDTO">
+		INSERT INTO member(mid, mpw, mname)
+		VALUES(#{id }, #{pw }, #{name })
+	</insert>
+
 </mapper>
