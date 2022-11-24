@@ -16,14 +16,6 @@ public class WooriService {
 	@Autowired
 	private WooriDAO wooriDAO;
 
-	public LoginDTO login(LoginDTO dto) {
-		if(dto.getId() != null || dto.getPw() != null) {
-			return wooriDAO.login(dto);			
-		} else {
-			dto.setCount(0);
-			return dto;
-		}
-	}
 
 	public List<BoardDTO> boardList() {
 		return wooriDAO.boardList();

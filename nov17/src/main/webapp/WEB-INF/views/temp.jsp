@@ -15,47 +15,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <link href="./css/style.css" rel="stylesheet" type="text/css">
 <link href="./css/index.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-function login(){
-	//alert("로그인 버튼을 눌렀습니다.");
-	var id = document.getElementById("id");
-	//alert(id.value);
-	if(id.value == "" || id.value.length < 3){
-		alert("아이디를 입력하세요.");
-		id.focus();
-		return false;
-	}
-	var pw = document.getElementById("pw");
-	if (pw.value.length < 3 || pw.value == "") {
-		alert("비밀번호를 입력해주세요.");
-		pw.focus();
-		return false;
-	}
-	//return false; 다 성공하면 진행하기 위해서
-	//주석처리합니다.
-}
-</script>
+
 </head>
 <body>
 <%@include file="menu.jsp"%>
 <div class="container">
-	<div id="logindiv">
-		<img alt="" src="./images/main.jpg" width="700px;">
-		<article id="loginform">
-		<form class="row" action="./login" method="post" onsubmit="return login()">
-			<div class="col-sm-5">
-				<input class="form-control" type="text" name="id" id="id" placeholder="아이디를 입력해주세요"> 
-			</div>
-			<div class="col-sm-5">
-				<input class="form-control" type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요">
-			</div>
-			<div class="col-sm-auto">
-				<button class="btn btn-primary" type="submit" style="width: 90px">로그인</button>
-			</div>
-		</form>
-		<a href="./join">회원가입</a>
-		</article>
-	</div>
+	<!-- 여기에 적어주세요 -->
 </div>
 <%@include file="footer.jsp"%>
 </body>

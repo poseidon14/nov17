@@ -15,9 +15,7 @@ public class WooriDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public LoginDTO login(LoginDTO dto) {
-		return sqlSession.selectOne("login.login", dto);
-	}
+
 
 	public List<BoardDTO> boardList() {
 		return sqlSession.selectList("board.boardList");// 파라미터가 없어요.

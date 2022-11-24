@@ -44,29 +44,7 @@ public class WooriController {
 		return mv;
 	}
 
-	@PostMapping("/login")
-	public String login(LoginDTO dto, HttpServletRequest request) {
-		LoginDTO result = wooriService.login(dto);
-		if (result.getCount() == 1) {
-			// 세션만들어주기
-			HttpSession session = request.getSession();
-			session.setAttribute("name", result.getName());
-			session.setAttribute("id", dto.getId());
-			return "redirect:/main";
-		} else {
-			return "redirect:/";
-		}
-	}
-
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		if(session.getAttribute("name") != null || session.getAttribute("id") != null) {			
-			session.invalidate();// 모두 초기화!!!!!
-		}
-		return "redirect:/";// 컨트롤러 다시 돌아가기
-	}
-
-	
+		
 	//2022-11-21 빅데이터 처리시스템 개발 / 빅데이터 처리시스템 설계하기
 	@PostMapping("/write")
 	public String write(HttpServletRequest request) throws UnsupportedEncodingException {
