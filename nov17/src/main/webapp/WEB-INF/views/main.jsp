@@ -49,9 +49,10 @@
 			</tr>
 			</c:forEach>
 		</table>
-		
-		<!-- 페이지네이션 -->
-		<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
+		<div id="paging" style="width: 100%; height: 30px; text-align: center;">
+			<!-- 페이지네이션 -->
+			<ui:pagination paginationInfo="${paginationInfo }" type="image" jsFunction="linkPage"/>
+		</div>
 		<!-- <button class="btn btn-primary" onclick="location.href='./write'">글쓰기</button> -->
 		
 	</article>

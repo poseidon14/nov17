@@ -41,7 +41,7 @@ public class WooriController {
 		//pageNo
 		//전체 글 수  220 / 10 = 22
 		int totalCount = wooriService.totalCount();//
-		System.out.println("전체 글 수 : " + totalCount);
+		//System.out.println("전체 글 수 : " + totalCount);
 		
 		//페이지네이션인포
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -54,8 +54,8 @@ public class WooriController {
 		int startPage = paginationInfo.getFirstRecordIndex();//죄송해요 ㅠㅠ
 		//lastPage = 	페이지 리스트의 마지막 페이지 번호
 		int lastPage = paginationInfo.getRecordCountPerPage();
-		System.out.println("startPage : " + startPage);
-		System.out.println("lastPage : " + lastPage);
+		//System.out.println("startPage : " + startPage);
+		//System.out.println("lastPage : " + lastPage);
 		
 		BoardDTO send = new BoardDTO();//db에 보내주기 위해서
 		send.setStartPage(startPage);
@@ -63,9 +63,9 @@ public class WooriController {
 		
 		List<BoardDTO> list = wooriService.boardList(send);
 		//System.out.println(list);
-		mv.addObject("list", list);//게시글
+		mv.addObject("list", list);//게시글 10
 		mv.addObject("paginationInfo", paginationInfo);//페이지네이션
-		mv.addObject("pageNo", pageNo);//페이지번호
+		//mv.addObject("pageNo", pageNo);//페이지번호?
 		return mv;
 	}
 
